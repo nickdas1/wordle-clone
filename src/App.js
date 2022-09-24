@@ -29,6 +29,7 @@ function App() {
             }
 
             if (e.key === "Enter") {
+                e.preventDefault();
                 if (currentGuess.length < 5) return;
 
                 const guessesCopy = [...guesses];
@@ -37,9 +38,22 @@ function App() {
                 setGuesses(guessesCopy);
 
                 const isCorrect = answer === currentGuess;
-                if (isCorrect || guesses[guesses.length - 1] !== null)
+                if (isCorrect || guesses[guesses.length - 1] !== null) {
                     setIsGameOver(true);
+                }
 
+                for (let i = 0; i < 5; i++) {
+                    let className = "";
+                    if (currentGuess[i] === answer[i]) {
+                        className = "correct";
+                    } else if (answer.includes(currentGuess[i])) {
+                        className = "contains";
+                    } else {
+                        className = "incorrect";
+                    }
+                    shadeKeyboard(currentGuess[i], className)
+                }
+                
                 setCurrentGuess("");
             }
         };
@@ -48,6 +62,15 @@ function App() {
 
         return () => window.removeEventListener("keydown", handleKeypress);
     }, [currentGuess, guesses, answer, isGameOver]);
+
+    const shadeKeyboard = (key, className) => {
+        for (let el of document.querySelectorAll(".keyboard-button")) {
+            if (el.textContent.toUpperCase() === key) {
+                if (el.classList.contains("correct")) return;
+                el.classList.add(className);
+            }
+        }
+    }
 
     return (
         <div className="App">

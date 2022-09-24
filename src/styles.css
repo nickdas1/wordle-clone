@@ -7,6 +7,10 @@ h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+button:focus {
+    outline: none;
+}
+
 .App {
     width: 100%;
     display: flex;
