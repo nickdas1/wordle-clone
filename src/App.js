@@ -1,5 +1,5 @@
-import { Snackbar, SnackbarContent } from "@mui/material";
 import { useEffect, useState } from "react";
+import { Snackbar, SnackbarContent } from "@mui/material";
 import Keyboard from "./Keyboard";
 import "./styles.css";
 import {validWords, validAnswers} from "./words";
