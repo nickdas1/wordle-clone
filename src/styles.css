@@ -1,3 +1,7 @@
+html {
+    height: 100%;
+}
+
 body {
     background-color: #121213;
 }
@@ -31,8 +35,8 @@ button:focus {
     padding: 15px;
     margin-right: 5px;
     margin-top: 5px;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     text-align: center;
     text-transform: uppercase;
     font-size: 1rem;
@@ -46,6 +50,8 @@ button:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: absolute;
+    bottom: 0;
 }
 
 .keyboard-cont div {

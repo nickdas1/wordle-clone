@@ -54,7 +54,7 @@ function App() {
                 if (isCorrect) {
                     setIsGameOver(true);
                     setIsOpen(true);
-                    setMessage("Congrats!");
+                    setMessage("You win!");
                 }
 
                 if (!isCorrect && guessesCopy[5] !== null) {
