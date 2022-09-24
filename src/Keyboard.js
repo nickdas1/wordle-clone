@@ -1,4 +1,6 @@
-export default function Keyboard({ answer, guesses }) {
+import BackspaceIcon from '@mui/icons-material/Backspace';
+
+export default function Keyboard() {
     const handleClick = (key) => {
         let event = new KeyboardEvent("keydown", {
             key,
@@ -46,7 +48,7 @@ export default function Keyboard({ answer, guesses }) {
                             handleClick(key === "Del" ? "Backspace" : key)
                         }
                     >
-                        {key}
+                        {key === "Del" ? <BackspaceIcon sx={{fontSize: "1rem"}} /> : key}
                     </button>
                 ))}
             </div>

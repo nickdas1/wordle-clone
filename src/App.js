@@ -11,7 +11,7 @@ function App() {
 
     useEffect(() => {
         const randomWord = Math.floor(Math.random() * words.length);
-        setAnswer(words[randomWord]);
+        setAnswer(words[randomWord].toUpperCase());
     }, []);
 
     useEffect(() => {
@@ -51,9 +51,9 @@ function App() {
                     } else {
                         className = "incorrect";
                     }
-                    shadeKeyboard(currentGuess[i], className)
+                    shadeKeyboard(currentGuess[i], className);
                 }
-                
+
                 setCurrentGuess("");
             }
         };
@@ -70,11 +70,11 @@ function App() {
                 el.classList.add(className);
             }
         }
-    }
+    };
 
     return (
         <div className="App">
-            <h1>Code-L</h1>
+            <h1>Codele</h1>
             {guesses.map((guess, idx) => {
                 const isCurrentGuess =
                     guesses.findIndex((val) => val === null) === idx;
@@ -88,11 +88,7 @@ function App() {
                     </div>
                 );
             })}
-            <Keyboard
-                answer={answer}
-                guesses={guesses}
-                currentGuess={currentGuess}
-            />
+            <Keyboard />
         </div>
     );
 }
