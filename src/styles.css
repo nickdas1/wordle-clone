@@ -69,12 +69,12 @@ button:focus {
     border-radius: 4px;
 }
 
-.correct {
-    background-color: #538d4e;
-}
-
 .contains {
     background-color: #b59f3b;
+}
+
+.correct {
+    background-color: #538d4e;
 }
 
 .incorrect {

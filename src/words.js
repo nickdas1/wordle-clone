@@ -1,4 +1,5 @@
 export const validAnswers = [
+    "forms",
     "alert",
     "error",
     "faang",
@@ -70,9 +71,13 @@ export const validAnswers = [
     "nosql",
     "split",
     "modal",
+    "graph",
+    "trees",
+    "mongo",
 ];
 
 export const validWords = [
+    "mongo",
     "faang",
     "axios",
     "redux",
