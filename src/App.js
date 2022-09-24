@@ -1,17 +1,20 @@
+import { Snackbar, SnackbarContent } from "@mui/material";
 import { useEffect, useState } from "react";
 import Keyboard from "./Keyboard";
 import "./styles.css";
-import words from "./words";
+import {validWords, validAnswers} from "./words";
 
 function App() {
-    const [answer, setAnswer] = useState("HELLO");
+    const [answer, setAnswer] = useState("REACT");
     const [guesses, setGuesses] = useState(new Array(6).fill(null));
     const [currentGuess, setCurrentGuess] = useState("");
     const [isGameOver, setIsGameOver] = useState(false);
+    const [message, setMessage] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        const randomWord = Math.floor(Math.random() * words.length);
-        setAnswer(words[randomWord].toUpperCase());
+        const randomWord = Math.floor(Math.random() * validAnswers.length);
+        setAnswer(validAnswers[randomWord].toUpperCase());
     }, []);
 
     useEffect(() => {
@@ -30,7 +33,17 @@ function App() {
 
             if (e.key === "Enter") {
                 e.preventDefault();
-                if (currentGuess.length < 5) return;
+                if (currentGuess.length < 5) {
+                    setIsOpen(true);
+                    setMessage("Not enough letters");
+                    return;
+                }
+
+                if (validWords.findIndex((word) => word === currentGuess.toLowerCase()) === -1) {
+                    setIsOpen(true);
+                    setMessage("Not in word list");
+                    return;
+                }
 
                 const guessesCopy = [...guesses];
                 let currentIndex = guesses.findIndex((val) => val === null);
@@ -38,8 +51,16 @@ function App() {
                 setGuesses(guessesCopy);
 
                 const isCorrect = answer === currentGuess;
-                if (isCorrect || guesses[guesses.length - 1] !== null) {
+                if (isCorrect) {
                     setIsGameOver(true);
+                    setIsOpen(true);
+                    setMessage("Congrats!");
+                }
+
+                if (!isCorrect && guessesCopy[5] !== null) {
+                    setIsGameOver(true);
+                    setIsOpen(true);
+                    setMessage(answer);
                 }
 
                 for (let i = 0; i < 5; i++) {
@@ -75,6 +96,22 @@ function App() {
     return (
         <div className="App">
             <h1>Codele</h1>
+            <Snackbar
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                open={isOpen}
+                autoHideDuration={1500}
+                onClose={() => setIsOpen(false)}
+            >
+                <SnackbarContent
+                    message={message}
+                    sx={{
+                        backgroundColor: "white",
+                        color: "black",
+                        justifyContent: "center",
+                        fontWeight: "bold",
+                    }}
+                />
+            </Snackbar>
             {guesses.map((guess, idx) => {
                 const isCurrentGuess =
                     guesses.findIndex((val) => val === null) === idx;
