@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Snackbar, SnackbarContent } from "@mui/material";
 import Keyboard from "./Keyboard";
 import "./styles.css";
-import {validWords, validAnswers} from "./words";
+import { validWords, validAnswers } from "./words";
 
 function App() {
     const [answer, setAnswer] = useState("REACT");
@@ -12,9 +12,19 @@ function App() {
     const [message, setMessage] = useState("");
     const [isOpen, setIsOpen] = useState(false);
 
-    useEffect(() => {
+    const newGame = () => {
         const randomWord = Math.floor(Math.random() * validAnswers.length);
         setAnswer(validAnswers[randomWord].toUpperCase());
+        setGuesses(new Array(6).fill(null));
+        setCurrentGuess("");
+        setIsGameOver(false);
+        document
+            .querySelectorAll(".keyboard-button")
+            .forEach((el) => (el.className = "keyboard-button"));
+    };
+
+    useEffect(() => {
+        newGame();
     }, []);
 
     useEffect(() => {
@@ -39,7 +49,11 @@ function App() {
                     return;
                 }
 
-                if (validWords.findIndex((word) => word === currentGuess.toLowerCase()) === -1) {
+                if (
+                    validWords.findIndex(
+                        (word) => word === currentGuess.toLowerCase()
+                    ) === -1
+                ) {
                     setIsOpen(true);
                     setMessage("Not in word list");
                     return;
@@ -125,6 +139,9 @@ function App() {
                     </div>
                 );
             })}
+            <button className="new-game" onClick={newGame}>
+                New Game
+            </button>
             <Keyboard />
         </div>
     );

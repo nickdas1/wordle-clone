@@ -74,10 +74,13 @@ export const validAnswers = [
     "graph",
     "trees",
     "mongo",
+    "babel",
+    "linux",
 ];
 
 export const validWords = [
     "mongo",
+    "linux",
     "faang",
     "axios",
     "redux",
