@@ -25,8 +25,6 @@ export default function Intro() {
         <Modal
             open={open}
             onClose={() => setOpen(false)}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
             disableAutoFocus
         >
             <Box sx={style}>
