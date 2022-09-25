@@ -80,6 +80,7 @@ export const validAnswers = [
 ];
 
 export const validWords = [
+    "arial",
     "mongo",
     "linux",
     "faang",
