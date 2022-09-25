@@ -2,7 +2,7 @@ import { AppBar, Box, Typography, Toolbar } from "@mui/material";
 
 export default function Navbar({ newGame }) {
     return (
-        <Box sx={{ flexGrow: 1, mb: 8 }}>
+        <Box sx={{ flexGrow: 1, mb: 4 }}>
             <AppBar position="static" sx={{ backgroundColor: "#121213" }}>
                 <Toolbar>
                     <Typography
