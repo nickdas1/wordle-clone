@@ -3,6 +3,7 @@ import { Snackbar, SnackbarContent } from "@mui/material";
 import Keyboard from "./Keyboard";
 import "./styles.css";
 import { validWords, validAnswers } from "./words";
+import Intro from "./Intro";
 
 function App() {
     const [answer, setAnswer] = useState("REACT");
@@ -109,6 +110,7 @@ function App() {
 
     return (
         <div className="App">
+            <Intro />
             <h1>Codele</h1>
             <Snackbar
                 anchorOrigin={{ vertical: "top", horizontal: "center" }}
