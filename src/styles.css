@@ -4,6 +4,7 @@ html {
 
 body {
     background-color: #121213;
+    background-image: url(background.jpeg);
 }
 
 h1 {
@@ -46,7 +47,7 @@ button:focus {
 }
 
 .tile {
-    border: 2px solid #818384;
+    border: 2px solid white;
     padding: 15px;
     margin-right: 5px;
     margin-top: 5px;
@@ -56,7 +57,8 @@ button:focus {
     text-transform: uppercase;
     font-size: 1rem;
     font-weight: 700;
-    color: white;
+    color: black;
+    background-color: rgb(187, 187, 187);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -91,11 +93,11 @@ button:focus {
 }
 
 .contains {
-    background-color: #b59f3b;
+    background-color: #caa70d;
 }
 
 .correct {
-    background-color: #538d4e;
+    background-color: #5cb454;
 }
 
 .incorrect {
