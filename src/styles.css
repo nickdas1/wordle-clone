@@ -40,7 +40,7 @@ button:focus {
 }
 
 .tile {
-    border: 2px solid white;
+    border: 2px solid black;
     padding: 15px;
     margin-right: 5px;
     margin-top: 5px;
@@ -51,7 +51,7 @@ button:focus {
     font-size: 1rem;
     font-weight: 700;
     color: black;
-    background-color: rgb(187, 187, 187);
+    background-color: rgb(215, 215, 215);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
