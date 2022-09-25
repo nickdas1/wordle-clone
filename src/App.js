@@ -4,6 +4,7 @@ import Keyboard from "./Keyboard";
 import "./styles.css";
 import { validWords, validAnswers } from "./words";
 import Intro from "./Intro";
+import Navbar from "./Navbar";
 
 function App() {
     const [answer, setAnswer] = useState("REACT");
@@ -110,8 +111,8 @@ function App() {
 
     return (
         <div className="App">
+            <Navbar newGame={newGame} />
             <Intro />
-            <h1>Codele</h1>
             <Snackbar
                 anchorOrigin={{ vertical: "top", horizontal: "center" }}
                 open={isOpen}
@@ -141,9 +142,6 @@ function App() {
                     </div>
                 );
             })}
-            <button className="new-game" onClick={newGame}>
-                New Game
-            </button>
             <Keyboard />
         </div>
     );
