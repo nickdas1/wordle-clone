@@ -42,7 +42,7 @@ export default function Intro() {
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                     Click the New Game button to reset the game with a new
-                    answer.
+                    answer. See how many answers you can get in a row!
                 </Typography>
             </Box>
         </Modal>
