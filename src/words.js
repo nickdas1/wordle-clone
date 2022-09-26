@@ -80,6 +80,7 @@ export const validAnswers = [
     "arrow",
     "audio",
     "media",
+    "stash",
 ];
 
 export const validWords = [
