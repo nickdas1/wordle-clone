@@ -14,6 +14,7 @@ function App() {
     const [isGameOver, setIsGameOver] = useState(false);
     const [message, setMessage] = useState("");
     const [isOpen, setIsOpen] = useState(false);
+    const [streak, setStreak] = useState(0);
 
     const newGame = () => {
         const randomWord = Math.floor(Math.random() * validAnswers.length);
@@ -72,12 +73,14 @@ function App() {
                     setIsGameOver(true);
                     setIsOpen(true);
                     setMessage("You win!");
+                    setStreak(streak + 1);
                 }
 
                 if (!isCorrect && guessesCopy[5] !== null) {
                     setIsGameOver(true);
                     setIsOpen(true);
                     setMessage(answer);
+                    setStreak(0);
                 }
 
                 for (let i = 0; i < 5; i++) {
@@ -99,7 +102,7 @@ function App() {
         window.addEventListener("keydown", handleKeypress);
 
         return () => window.removeEventListener("keydown", handleKeypress);
-    }, [currentGuess, guesses, answer, isGameOver]);
+    }, [currentGuess, guesses, answer, isGameOver, streak]);
 
     const shadeKeyboard = (key, className) => {
         for (let el of document.querySelectorAll(".keyboard-button")) {
@@ -112,7 +115,7 @@ function App() {
 
     return (
         <div className="App">
-            <Navbar newGame={newGame} />
+            <Navbar newGame={newGame} streak={streak} />
             <Intro />
             <Notification
                 isOpen={isOpen}
