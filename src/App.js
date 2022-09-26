@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Snackbar, SnackbarContent } from "@mui/material";
-import Keyboard from "./Keyboard";
 import "./styles.css";
 import { validWords, validAnswers } from "./words";
 import Intro from "./Intro";
+import Keyboard from "./Keyboard";
 import Navbar from "./Navbar";
+import Notification from "./Notification";
+import Row from "./Row";
 
 function App() {
     const [answer, setAnswer] = useState("REACT");
@@ -113,22 +114,11 @@ function App() {
         <div className="App">
             <Navbar newGame={newGame} />
             <Intro />
-            <Snackbar
-                anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                open={isOpen}
-                autoHideDuration={1500}
-                onClose={() => setIsOpen(false)}
-            >
-                <SnackbarContent
-                    message={message}
-                    sx={{
-                        backgroundColor: "white",
-                        color: "black",
-                        justifyContent: "center",
-                        fontWeight: "bold",
-                    }}
-                />
-            </Snackbar>
+            <Notification
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                message={message}
+            />
             {guesses.map((guess, idx) => {
                 const isCurrentGuess =
                     guesses.findIndex((val) => val === null) === idx;
@@ -145,36 +135,6 @@ function App() {
             <Keyboard />
         </div>
     );
-}
-
-function Row({ guess, answer, isSubmitted }) {
-    const tiles = [];
-
-    for (let i = 0; i < 5; i++) {
-        let className = "tile ";
-
-        if (isSubmitted) {
-            if (guess[i] === answer[i]) {
-                className += "correct";
-            } else if (answer.includes(guess[i])) {
-                className += "contains";
-            } else {
-                className += "incorrect";
-            }
-        }
-
-        tiles.push(
-            <div
-                key={`tile${i}`}
-                className={className}
-                style={isSubmitted ? { border: "2px solid transparent" } : {}}
-            >
-                {guess[i]}
-            </div>
-        );
-    }
-
-    return tiles.map((tile) => tile);
 }
 
 export default App;

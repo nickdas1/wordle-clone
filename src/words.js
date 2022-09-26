@@ -77,6 +77,9 @@ export const validAnswers = [
     "mongo",
     "babel",
     "linux",
+    "arrow",
+    "audio",
+    "media",
 ];
 
 export const validWords = [

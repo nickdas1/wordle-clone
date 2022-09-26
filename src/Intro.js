@@ -34,7 +34,7 @@ export default function Intro() {
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                     Codele is a take on the popular game Wordle, where all of
-                    the answers are programming related.
+                    the answers are programming-related terms.
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                     Guess a valid 5 letter word and hit enter to see how close
