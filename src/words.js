@@ -81,9 +81,11 @@ export const validAnswers = [
     "audio",
     "media",
     "stash",
+    "emoji",
 ];
 
 export const validWords = [
+    "emoji",
     "arial",
     "mongo",
     "linux",
